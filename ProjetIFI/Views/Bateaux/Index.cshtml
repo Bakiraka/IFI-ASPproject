@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjetIFI.Models.Movie>
+﻿@model IEnumerable<ProjetIFI.Models.Bateaux>
 
 @{
     ViewBag.Title = "Index";
@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.ReleaseDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Genre)
+            @Html.DisplayNameFor(model => model.Type)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
@@ -35,7 +35,7 @@
             @Html.DisplayFor(modelItem => item.ReleaseDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Genre)
+            @Html.DisplayFor(modelItem => item.Type)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)

@@ -17,7 +17,7 @@ namespace ProjetIFI.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            return View(db.Movies.ToList());
+            return View(db.Bateaux.ToList());
         }
 
         // GET: Movies/Details/5
@@ -27,7 +27,7 @@ namespace ProjetIFI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
+            Bateaux movie = db.Bateaux.Find(id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -46,11 +46,11 @@ namespace ProjetIFI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public ActionResult Create([Bind(Include = "ID,Title,ReleaseDate,Genre,Price")] Bateaux movie)
         {
             if (ModelState.IsValid)
             {
-                db.Movies.Add(movie);
+                db.Bateaux.Add(movie);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace ProjetIFI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
+            Bateaux movie = db.Bateaux.Find(id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace ProjetIFI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public ActionResult Edit([Bind(Include = "ID,Title,ReleaseDate,Genre,Price")] Bateaux movie)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace ProjetIFI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
+            Bateaux movie = db.Bateaux.Find(id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace ProjetIFI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Movie movie = db.Movies.Find(id);
-            db.Movies.Remove(movie);
+            Bateaux movie = db.Bateaux.Find(id);
+            db.Bateaux.Remove(movie);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
