@@ -36,23 +36,9 @@ namespace ProjetIFI.Controllers
         }
 
         // GET: Bateaux/Create
-        [Authorize]
-        public ActionResult Create(Bateau bateau, HttpPostedFileBase file)
+        public ActionResult Create()
         {
-            if (ModelState.IsValid)
-            {
-                if (file != null)
-                {
-                    file.SaveAs(HttpContext.Server.MapPath("~/Images/")
-                                                          + file.FileName);
-                    bateau.ImagePath = file.FileName;
-                }
-                db.Bateaux.Add(bateau);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(bateau);
+            return View();
         }
 
         // POST: Bateaux/Create
@@ -60,7 +46,7 @@ namespace ProjetIFI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nom,DateConstruction,TypeBateau,Prix,ImagePath")] Bateau bateau)
+        public ActionResult Create([Bind(Include = "ID,Nom,DateConstruction,TypeBateau,Prix")] Bateau bateau)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +78,7 @@ namespace ProjetIFI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nom,DateConstruction,TypeBateau,Prix,ImagePath")] Bateau bateau)
+        public ActionResult Edit([Bind(Include = "ID,Nom,DateConstruction,TypeBateau,Prix")] Bateau bateau)
         {
             if (ModelState.IsValid)
             {

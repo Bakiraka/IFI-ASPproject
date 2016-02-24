@@ -10,7 +10,6 @@ namespace MvcMovie.Models
         public DateTime DateConstruction { get; set; }
         public string TypeBateau { get; set; }
         public decimal Prix { get; set; }
-        public string ImagePath { get; set; }
     }
 
     public class BateauxDBContext : DbContext
