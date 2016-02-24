@@ -6,111 +6,125 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using ProjetIFI.Models;
+using MvcMovie.Models;
 
 namespace ProjetIFI.Controllers
 {
-    public class MoviesController : Controller
+    public class BateauxController : Controller
     {
-        private MovieDBContext db = new MovieDBContext();
+        private BateauxDBContext db = new BateauxDBContext();
 
-        // GET: Movies
+        // GET: Bateaux
         public ActionResult Index()
         {
             return View(db.Bateaux.ToList());
         }
 
-        // GET: Movies/Details/5
+        // GET: Bateaux/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Bateaux movie = db.Bateaux.Find(id);
-            if (movie == null)
+            Bateau bateau = db.Bateaux.Find(id);
+            if (bateau == null)
             {
                 return HttpNotFound();
             }
-            return View(movie);
+            return View(bateau);
         }
 
-        // GET: Movies/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Movies/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,ReleaseDate,Genre,Price")] Bateaux movie)
+        // GET: Bateaux/Create
+        [Authorize]
+        public ActionResult Create(Bateau bateau, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
-                db.Bateaux.Add(movie);
+                if (file != null)
+                {
+                    file.SaveAs(HttpContext.Server.MapPath("~/Images/")
+                                                          + file.FileName);
+                    bateau.ImagePath = file.FileName;
+                }
+                db.Bateaux.Add(bateau);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(movie);
+            return View(bateau);
         }
 
-        // GET: Movies/Edit/5
+        // POST: Bateaux/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ID,Nom,DateConstruction,TypeBateau,Prix,ImagePath")] Bateau bateau)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Bateaux.Add(bateau);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(bateau);
+        }
+
+        // GET: Bateaux/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Bateaux movie = db.Bateaux.Find(id);
-            if (movie == null)
+            Bateau bateau = db.Bateaux.Find(id);
+            if (bateau == null)
             {
                 return HttpNotFound();
             }
-            return View(movie);
+            return View(bateau);
         }
 
-        // POST: Movies/Edit/5
+        // POST: Bateaux/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,ReleaseDate,Genre,Price")] Bateaux movie)
+        public ActionResult Edit([Bind(Include = "ID,Nom,DateConstruction,TypeBateau,Prix,ImagePath")] Bateau bateau)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(movie).State = EntityState.Modified;
+                db.Entry(bateau).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(movie);
+            return View(bateau);
         }
 
-        // GET: Movies/Delete/5
+        // GET: Bateaux/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Bateaux movie = db.Bateaux.Find(id);
-            if (movie == null)
+            Bateau bateau = db.Bateaux.Find(id);
+            if (bateau == null)
             {
                 return HttpNotFound();
             }
-            return View(movie);
+            return View(bateau);
         }
 
-        // POST: Movies/Delete/5
+        // POST: Bateaux/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Bateaux movie = db.Bateaux.Find(id);
-            db.Bateaux.Remove(movie);
+            Bateau bateau = db.Bateaux.Find(id);
+            db.Bateaux.Remove(bateau);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

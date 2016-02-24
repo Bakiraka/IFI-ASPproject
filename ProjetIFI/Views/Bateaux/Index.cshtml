@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjetIFI.Models.Bateaux>
+﻿@model IEnumerable<MvcMovie.Models.Bateau>
 
 @{
     ViewBag.Title = "Index";
@@ -12,16 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.Nom)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
+            @Html.DisplayNameFor(model => model.DateConstruction)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Type)
+            @Html.DisplayNameFor(model => model.TypeBateau)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            @Html.DisplayNameFor(model => model.Prix)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePath)
         </th>
         <th></th>
     </tr>
@@ -29,16 +32,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            @Html.DisplayFor(modelItem => item.Nom)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ReleaseDate)
+            @Html.DisplayFor(modelItem => item.DateConstruction)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Type)
+            @Html.DisplayFor(modelItem => item.TypeBateau)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Price)
+            @Html.DisplayFor(modelItem => item.Prix)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImagePath)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
