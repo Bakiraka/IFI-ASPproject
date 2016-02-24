@@ -33,7 +33,7 @@ namespace ProjetIFI.Models
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "Remember this browser?")]
+        [Display(Name = "Se rappeler de ce navigateur ?")]
         public bool RememberBrowser { get; set; }
 
         public bool RememberMe { get; set; }

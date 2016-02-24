@@ -20,7 +20,7 @@ namespace ProjetIFI.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Page de contact.";
+            ViewBag.Message = "Nous contatos :";
 
             return View();
         }
