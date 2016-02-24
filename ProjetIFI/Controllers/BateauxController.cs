@@ -36,6 +36,7 @@ namespace ProjetIFI.Controllers
         }
 
         // GET: Bateaux/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -59,6 +60,7 @@ namespace ProjetIFI.Controllers
         }
 
         // GET: Bateaux/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +80,7 @@ namespace ProjetIFI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "ID,Nom,DateConstruction,TypeBateau,Prix")] Bateau bateau)
         {
             if (ModelState.IsValid)
@@ -90,6 +93,7 @@ namespace ProjetIFI.Controllers
         }
 
         // GET: Bateaux/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,6 +111,7 @@ namespace ProjetIFI.Controllers
         // POST: Bateaux/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Bateau bateau = db.Bateaux.Find(id);

@@ -55,10 +55,10 @@ namespace ProjetIFI.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Mot de passe")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Se rappeler de moi ?")]
         public bool RememberMe { get; set; }
     }
 
@@ -70,14 +70,14 @@ namespace ProjetIFI.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Le {0} doit être d'au moins {2} charactères de longueur.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Mot de passe")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Confirmer mot de passe")]
+        [Compare("Password", ErrorMessage = "Le mot de passe et le mot de passe de confirmation ne sont pas les mêmes.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -89,14 +89,14 @@ namespace ProjetIFI.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Le {0} doit être d'au moins {2} charactères de longueur.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Mot de passe")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Confirmer le mot de passe")]
+        [Compare("Mot de passe", ErrorMessage = "Le mot de passe et le mot de passe de confirmation ne sont pas les mêmes.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
